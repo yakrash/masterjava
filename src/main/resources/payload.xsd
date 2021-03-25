@@ -6,7 +6,18 @@
 
     <xs:element name="Payload">
         <xs:complexType>
-            <xs:all>
+            <xs:sequence>
+                <xs:element name="Projects">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                                <xs:sequence maxOccurs="unbounded">
+                                    <xs:element ref="http://javaops.ru}Project"/>
+                                </xs:sequence>
+                            </xs:restriction>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="Cities">
                     <xs:complexType>
                         <xs:sequence minOccurs="1" maxOccurs="unbounded">
@@ -21,7 +32,7 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-            </xs:all>
+            </xs:sequence>
         </xs:complexType>
     </xs:element>
 
@@ -53,4 +64,6 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
+    <xs:complexType name="//www.w3.org/2001/XMLSchema}anyType"/>
+    <xs:element name="//javaops.ru}Project"/>
 </xs:schema>
